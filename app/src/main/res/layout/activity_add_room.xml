@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:layout_width="match_parent"
+    android:gravity="center_horizontal"
+    android:background="#F4F6F8"
+    android:layout_height="match_parent">
+
+    <!-- THANH HỌ TÊN TRÊN CÙNG -->
+    <TextView
+        android:id="@+id/txtHoTen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NHÓM 11 - TRƯƠNG CÔNG SANG"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:padding="16dp"
+        android:background="#2196F3"
+        android:elevation="4dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Ô nhập tên phòng -->
+    <EditText
+        android:id="@+id/edtRoomName"
+        android:hint="Nhập tên phòng trọ..."
+        android:padding="14dp"
+        android:background="@android:drawable/edit_text"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- Nút lưu -->
+    <Button
+        android:id="@+id/btnSaveRoom"
+        android:text="Lưu phòng"
+        android:textAllCaps="false"
+        android:layout_marginTop="24dp"
+        android:textSize="17sp"
+        android:backgroundTint="#2196F3"
+        android:textColor="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"/>
+
+</LinearLayout>

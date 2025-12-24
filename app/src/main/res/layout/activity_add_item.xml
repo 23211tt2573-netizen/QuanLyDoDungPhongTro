@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#F4F6F8">
+
+    <!-- 🔵 THANH HỌ TÊN -->
+    <TextView
+        android:id="@+id/txtHoTen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NHÓM 11 - NGUYỄN TẤN GIA"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:padding="16dp"
+        android:background="#2196F3"
+        android:elevation="6dp"
+        android:layout_marginBottom="26dp"
+        android:layout_marginTop="8dp"/>
+
+    <!-- 🔶 TIÊU ĐỀ -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="THÊM ĐỒ DÙNG"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp"/>
+
+
+    <!-- 🔽 LOẠI ĐỒ DÙNG -->
+    <Spinner
+        android:id="@+id/spType"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@android:drawable/edit_text"
+        android:padding="6dp" />
+
+
+    <!-- 🔽 TÊN ĐỒ DÙNG -->
+    <EditText
+        android:id="@+id/edtItemName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tên đồ dùng..."
+        android:padding="14dp"
+        android:background="@android:drawable/edit_text"
+        android:textSize="16sp"
+        android:layout_marginTop="14dp"/>
+
+    <!-- 🔽 SỐ LƯỢNG -->
+    <EditText
+        android:id="@+id/edtQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Số lượng..."
+        android:padding="14dp"
+        android:background="@android:drawable/edit_text"
+        android:inputType="number"
+        android:textSize="16sp"
+        android:layout_marginTop="14dp"/>
+
+
+    <!-- 🔘 NÚT LƯU -->
+    <Button
+        android:id="@+id/btnSaveItem"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="Lưu đồ dùng"
+        android:textSize="17sp"
+        android:textAllCaps="false"
+        android:backgroundTint="#2196F3"
+        android:textColor="#ffffff"
+        android:layout_marginTop="30dp"/>
+
+</LinearLayout>
