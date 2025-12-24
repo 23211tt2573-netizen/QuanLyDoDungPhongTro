@@ -18,7 +18,6 @@ class AdminStatistics : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_statistics)
 
-        // 🔐 CHỈ ADMIN
         val isAdmin = getSharedPreferences("USER", MODE_PRIVATE)
             .getBoolean("isAdmin", false)
 

@@ -18,13 +18,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var lv: ListView
     private lateinit var adapter: ArrayAdapter<String>
     private val rooms = mutableListOf<RoomEntity>()
-    private var isAdmin = false   // 👈 QUYỀN
+    private var isAdmin = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_room_list)
 
-        // 🔐 LẤY QUYỀN
         isAdmin = getSharedPreferences("USER", MODE_PRIVATE)
             .getBoolean("isAdmin", false)
 
@@ -32,17 +31,14 @@ class MainActivity : AppCompatActivity() {
 
         val btnAddRoom = findViewById<Button>(R.id.btnAddRoom)
 
-        // 👤 USER: ẨN NÚT THÊM PHÒNG
         if (!isAdmin) {
             btnAddRoom.visibility = Button.GONE
         }
 
-        // ➕ THÊM PHÒNG (ADMIN)
         btnAddRoom.setOnClickListener {
             startActivity(Intent(this, AddRoom::class.java))
         }
 
-        // 🚪 ĐĂNG XUẤT
         findViewById<Button>(R.id.btnLogout).setOnClickListener {
             val intent = Intent(this, Login::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -50,12 +46,11 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-        // 📌 CLICK PHÒNG
         lv.setOnItemClickListener { _, _, position, _ ->
             val room = rooms[position]
 
             if (isAdmin) {
-                // 🔴 ADMIN: VÀO + XÓA
+                // ADMIN: VÀO + XÓA
                 val options = arrayOf("Vào phòng", "Xóa phòng")
 
                 AlertDialog.Builder(this)
@@ -67,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     }.show()
             } else {
-                // 🔵 USER: CHỈ VÀO PHÒNG
+                // USER: CHỈ VÀO PHÒNG
                 openRoom(room.id)
             }
         }
@@ -78,14 +73,14 @@ class MainActivity : AppCompatActivity() {
         loadRooms()
     }
 
-    // 👉 MỞ PHÒNG
+    // MỞ PHÒNG
     private fun openRoom(roomId: Int) {
         val i = Intent(this, ItemList::class.java)
         i.putExtra("roomId", roomId)
         startActivity(i)
     }
 
-    // 👉 XÓA PHÒNG (ADMIN)
+    // XÓA PHÒNG (ADMIN)
     private fun deleteRoom(roomId: Int) {
         lifecycleScope.launch(Dispatchers.IO) {
             AppDatabase.get(this@MainActivity)

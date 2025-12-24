@@ -37,7 +37,6 @@ class ItemDetail : AppCompatActivity() {
             return
         }
 
-        // 🔴 ADMIN chỉ xem
         cbBroken.isEnabled = !isAdmin
 
         loadItemDetail()
@@ -66,11 +65,9 @@ class ItemDetail : AppCompatActivity() {
                     Trạng thái: ${if (item.isBroken) "Hỏng" else "Còn tốt"}
                 """.trimIndent()
 
-                // ⚠️ QUAN TRỌNG: gỡ listener trước
                 cbBroken.setOnCheckedChangeListener(null)
                 cbBroken.isChecked = item.isBroken
 
-                // 🔵 USER mới được update
                 if (!isAdmin) {
                     cbBroken.setOnCheckedChangeListener { _, isChecked ->
                         updateBrokenStatus(isChecked)

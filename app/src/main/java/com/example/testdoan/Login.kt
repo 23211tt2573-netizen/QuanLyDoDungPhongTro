@@ -33,20 +33,18 @@ class Login : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // 🔴 1. ADMIN (CỨNG TRONG CODE)
             if (u == AdminConfig.USERNAME && p == AdminConfig.PASSWORD) {
                 getSharedPreferences("USER", MODE_PRIVATE)
                     .edit()
                     .putBoolean("isAdmin", true)
                     .apply()
 
-                // ✅ ADMIN VÀO MAIN
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
                 return@setOnClickListener
             }
 
-            // 🔵 2. USER (ROOM DATABASE)
+            // USER (ROOM DATABASE)
             lifecycleScope.launch(Dispatchers.IO) {
                 val user = db.userDao().login(u, p)
 
@@ -58,7 +56,7 @@ class Login : AppCompatActivity() {
                             .putBoolean("isAdmin", false)
                             .apply()
 
-                        // ✅ USER VÀO MAIN (KHÔNG VÀO STATISTICS)
+                        //USER VÀO MAIN (KHÔNG VÀO STATISTICS)
                         startActivity(Intent(this@Login, MainActivity::class.java))
                         finish()
                     } else {

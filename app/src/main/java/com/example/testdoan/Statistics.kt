@@ -40,10 +40,9 @@ class Statistics : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        loadStats() // luôn reload khi quay lại
+        loadStats()
     }
 
-    // ===== LOAD THỐNG KÊ =====
     private fun loadStats() {
         lifecycleScope.launch(Dispatchers.IO) {
 

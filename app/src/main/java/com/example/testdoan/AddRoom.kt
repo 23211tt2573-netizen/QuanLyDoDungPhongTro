@@ -43,7 +43,6 @@ class AddRoom : AppCompatActivity() {
 
             lifecycleScope.launch(Dispatchers.IO) {
 
-                // 1️⃣ INSERT PHÒNG – LẤY roomId
                 val roomId = db.roomDao().insert(
                     RoomEntity(
                         name = name,
@@ -51,7 +50,6 @@ class AddRoom : AppCompatActivity() {
                     )
                 ).toInt()
 
-                // 2️⃣ INSERT ĐỒ MẶC ĐỊNH CHO PHÒNG MỚI
                 val defaultItems = listOf(
                     ItemEntity(
                         name = "Giường",
@@ -79,7 +77,7 @@ class AddRoom : AppCompatActivity() {
                         "Đã thêm phòng",
                         Toast.LENGTH_SHORT
                     ).show()
-                    setResult(RESULT_OK) // 🔥 QUAN TRỌNG
+                    setResult(RESULT_OK)
                     finish()
                 }
             }

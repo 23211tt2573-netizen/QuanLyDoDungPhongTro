@@ -27,11 +27,9 @@ class ItemList : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_list)
 
-        // 🔐 LẤY QUYỀN
         isAdmin = getSharedPreferences("USER", MODE_PRIVATE)
             .getBoolean("isAdmin", false)
 
-        // ✅ NHẬN ĐÚNG roomId
         roomId = intent.getIntExtra("roomId", -1)
         if (roomId == -1) {
             Toast.makeText(this, "Room không hợp lệ", Toast.LENGTH_SHORT).show()
@@ -51,24 +49,23 @@ class ItemList : AppCompatActivity() {
         val btnStat = findViewById<Button>(R.id.btnStat)
         val edtSearch = findViewById<EditText>(R.id.edtSearch)
 
-        // 👤 USER → ẨN THÊM
         if (!isAdmin) btnAddItem.visibility = Button.GONE
 
-        // ➕ ADMIN THÊM ĐỒ
+        // ADMIN THÊM ĐỒ
         btnAddItem.setOnClickListener {
             val i = Intent(this, AddItem::class.java)
             i.putExtra("roomId", roomId)
             startActivity(i)
         }
 
-        // 📊 THỐNG KÊ
+        // THỐNG KÊ
         btnStat.setOnClickListener {
             val i = Intent(this, Statistics::class.java)
             i.putExtra("roomId", roomId)
             startActivity(i)
         }
 
-        // 🔍 SEARCH
+        // SEARCH
         edtSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
@@ -78,7 +75,7 @@ class ItemList : AppCompatActivity() {
             }
         })
 
-        // 📌 CLICK ITEM
+        // CLICK ITEM
         lv.setOnItemClickListener { _, _, position, _ ->
             val item = items[position]
 
@@ -99,7 +96,7 @@ class ItemList : AppCompatActivity() {
         }
     }
 
-    // 🔥 QUAY LẠI → LOAD LẠI
+    // QUAY LẠI → LOAD LẠI
     override fun onResume() {
         super.onResume()
         loadItems()
